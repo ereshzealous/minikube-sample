@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/home")
 public class HomeResource {
 
+    @Value("${test}")
+    String test = null;
 
     @GetMapping("/data")
     public ResponseEntity<ResponseData> getData() {
@@ -26,6 +28,7 @@ public class HomeResource {
         responseData.setId(1);
         responseData.setName("Eresh");
         responseData.setPlace("Hyderabad");
+        responseData.setValue(test);
         return new ResponseEntity<ResponseData>(responseData, HttpStatus.OK);
     }
 
@@ -35,5 +38,6 @@ public class HomeResource {
         private String name;
         private Integer id;
         private String place;
+        private String value;
     }
 }
